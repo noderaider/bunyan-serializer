@@ -1,6 +1,6 @@
 {
   "name": "bunyan-serializer",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "a lightweight module to pretty print a bunyan stream.",
   "main": "lib/index.js",
   "files": [
