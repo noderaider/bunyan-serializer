@@ -1,5 +1,3 @@
-
-
 /**
  * createPrettySerializer is a thunk that takes configuration parameters and returns a bunyan serializer function.
  * @param  {boolean} options.showName     Enables printing the logger name in logs. (false)
