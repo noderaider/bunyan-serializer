@@ -10,7 +10,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import createPrettySerializer from './serializers/createPrettySerializer'\r\n\r\nexport { createPrettySerializer }\r\n\r\n"
+    "content": "export * from './serializers'\r\n"
   },
   {
     "__docId__": 1,

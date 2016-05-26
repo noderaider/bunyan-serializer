@@ -1,4 +1,1 @@
-import createPrettySerializer from './serializers/createPrettySerializer'
-
-export { createPrettySerializer }
-
+export * from './serializers'
