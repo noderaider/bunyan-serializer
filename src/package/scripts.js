@@ -32,7 +32,7 @@ export default ({}) => ({ 'start': 'npm run build -- --watch'
                           /** GH-PAGES RELEASE */
                         , 'prerelease-gh-pages': 'npm run doc'
                         , 'release-gh-pages': 'run-s gh-pages-subtree gh-pages-push gh-pages-delete'
-                        , 'postrelease-gh-pages': 'rimraf public && git-savegit push --follow-tags'
+                        , 'postrelease-gh-pages': 'rimraf public && git-save -- remove-docs && git push --follow-tags'
 
                           /** ESDOC */
                         , 'predoc': `rimraf ${GH_PAGES_ROOT}`
