@@ -6,8 +6,6 @@
 
 [![NPM](https://nodei.co/npm/bunyan-serializer.png?stars=true&downloads=true)](https://nodei.co/npm/bunyan-serializer/)
 
-![dependencies](https://raw.githubusercontent.com/cchamberlain/bunyan-serializer/master/public/images/dependencies.png)
-
 ## Install
 
 `npm i -S bunyan-serializer`
