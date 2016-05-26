@@ -23,7 +23,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "\r\n\r\n\r\nexport default function createPrettySerializer( { showName = false\r\n                                                , showHostname = false\r\n                                                , showPid = true\r\n                                                , showTime = true\r\n                                                , showError = true\r\n                                                , showSilly = false\r\n                                                } = {}) {\r\n  /**\r\n   * prettySerializer takes arguments from a bunyan WritableStream's write method and formats output in a human readable format.\r\n   * @param  {...Object} args - args that were passed to WritableStream.prototype.write()\r\n   * @return {string}           human readable string\r\n   */\r\n  return function prettySerializer(...args) {\r\n    try {\r\n      let record = x\r\n      try {\r\n        record = typeof x === 'string' ? JSON.parse(x) : x\r\n      } catch(err) {\r\n        return `INTERNAL|UNPARSEABLE=${record}`\r\n      }\r\n      const { name, hostname, pid, level, msg, time, v, err } = record\r\n      let levelName = level ? LEVEL_MAP[level] : 'UNKNOWN'\r\n      let output = `${levelName}`\r\n      if(showName && name)\r\n        output += `|NAME=${name}`\r\n      if(showHostname && hostname)\r\n        output += `|HOSTNAME=${hostname}`\r\n      if(showPid && pid)\r\n        output += `|PID=${pid}`\r\n      if(showTime && time)\r\n        output += `|${time}`\r\n      if(v)\r\n        output += `|V=${v}`\r\n      output += `|${msg}`\r\n\r\n      if(showError && err) {\r\n        const { message, stack } = err\r\n        output += `|ERR=${message}\\n${stack}`\r\n      }\r\n      if(showSilly)\r\n        output += `\\nSILLY => KEYS=[${Object.keys(record).join(', ')}]`\r\n      return output\r\n    } catch(err) {\r\n      return `INTERNAL|ERR=an error occurred formatting output => ${err.message || err}`\r\n    }\r\n  }\r\n}\r\n"
+    "content": "\r\n\r\n/**\r\n * createPrettySerializer is a thunk that takes configuration parameters and returns a bunyan serializer function.\r\n * @param  {boolean} options.showName     Enables printing the logger name in logs. (false)\r\n * @param  {boolean} options.showHostname Enables printing the hostname in logs. (false)\r\n * @param  {boolean} options.showPid      Enables printing the process id in the logs. (true)\r\n * @param  {boolean} options.showTime     Enables printing the timestamp in the logs. (true)\r\n * @param  {boolean} options.showError    Enables printing errors in the logs. (true)\r\n * @param  {boolean} options.showSilly    Prints additional debug information into the logs. (false)\r\n * @return {bunyanSerializer}             Returns a pretty formatting bunyanSerializer function that converts bunyan write input to human readable text.\r\n */\r\nexport default function createPrettySerializer( { showName = false\r\n                                                , showHostname = false\r\n                                                , showPid = true\r\n                                                , showTime = true\r\n                                                , showError = true\r\n                                                , showSilly = false\r\n                                                } = {}) {\r\n  /**\r\n   * prettySerializer takes arguments from a bunyan WritableStream's write method and formats output in a human readable format.\r\n   * @param  {...Object} args - args that were passed to WritableStream.prototype.write()\r\n   * @return {string}           human readable string\r\n   */\r\n  return function prettySerializer(...args) {\r\n    try {\r\n      let record = x\r\n      try {\r\n        record = typeof x === 'string' ? JSON.parse(x) : x\r\n      } catch(err) {\r\n        return `INTERNAL|UNPARSEABLE=${record}`\r\n      }\r\n      const { name, hostname, pid, level, msg, time, v, err } = record\r\n      let levelName = level ? LEVEL_MAP[level] : 'UNKNOWN'\r\n      let output = `${levelName}`\r\n      if(showName && name)\r\n        output += `|NAME=${name}`\r\n      if(showHostname && hostname)\r\n        output += `|HOSTNAME=${hostname}`\r\n      if(showPid && pid)\r\n        output += `|PID=${pid}`\r\n      if(showTime && time)\r\n        output += `|${time}`\r\n      if(v)\r\n        output += `|V=${v}`\r\n      output += `|${msg}`\r\n\r\n      if(showError && err) {\r\n        const { message, stack } = err\r\n        output += `|ERR=${message}\\n${stack}`\r\n      }\r\n      if(showSilly)\r\n        output += `\\nSILLY => KEYS=[${Object.keys(record).join(', ')}]`\r\n      return output\r\n    } catch(err) {\r\n      return `INTERNAL|ERR=an error occurred formatting output => ${err.message || err}`\r\n    }\r\n  }\r\n}\r\n"
   },
   {
     "__docId__": 2,
@@ -37,24 +37,77 @@
     "export": true,
     "importPath": "bunyan-serializer/lib/serializers/createPrettySerializer.js",
     "importStyle": "createPrettySerializer",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "createPrettySerializer is a thunk that takes configuration parameters and returns a bunyan serializer function.",
+    "lineNumber": 13,
     "params": [
       {
-        "name": "objectPattern",
-        "optional": true,
+        "nullable": null,
         "types": [
-          "{\"showName\": *, \"showHostname\": *, \"showPid\": *, \"showTime\": *, \"showError\": *, \"showSilly\": *}"
+          "boolean"
         ],
-        "defaultRaw": {},
-        "defaultValue": "{}"
+        "spread": false,
+        "optional": false,
+        "name": "options.showName",
+        "description": "Enables printing the logger name in logs. (false)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.showHostname",
+        "description": "Enables printing the hostname in logs. (false)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.showPid",
+        "description": "Enables printing the process id in the logs. (true)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.showTime",
+        "description": "Enables printing the timestamp in the logs. (true)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.showError",
+        "description": "Enables printing errors in the logs. (true)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.showSilly",
+        "description": "Prints additional debug information into the logs. (false)"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "bunyanSerializer"
+      ],
+      "spread": false,
+      "description": "Returns a pretty formatting bunyanSerializer function that converts bunyan write input to human readable text."
     },
     "generator": false
   },

@@ -53,13 +53,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="function/index.html#static-function-createPrettySerializer">createPrettySerializer</a></span></span><span data-ice="signature">(objectPattern: {&quot;showName&quot;: <span>*</span>, &quot;showHostname&quot;: <span>*</span>, &quot;showPid&quot;: <span>*</span>, &quot;showTime&quot;: <span>*</span>, &quot;showError&quot;: <span>*</span>, &quot;showSilly&quot;: <span>*</span>}): <span>*</span></span>
+           <span data-ice="name"><span><a href="function/index.html#static-function-createPrettySerializer">createPrettySerializer</a></span></span><span data-ice="signature">(): <span>bunyanSerializer</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>createPrettySerializer is a thunk that takes configuration parameters and returns a bunyan serializer function.</p>
+</div>
       </div>
     </td>
     <td>
@@ -79,18 +80,19 @@
     
     
     
-    <span data-ice="name">createPrettySerializer</span><span data-ice="signature">(objectPattern: {&quot;showName&quot;: <span>*</span>, &quot;showHostname&quot;: <span>*</span>, &quot;showPid&quot;: <span>*</span>, &quot;showTime&quot;: <span>*</span>, &quot;showError&quot;: <span>*</span>, &quot;showSilly&quot;: <span>*</span>}): <span>*</span></span>
+    <span data-ice="name">createPrettySerializer</span><span data-ice="signature">(): <span>bunyanSerializer</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/lib/serializers/createPrettySerializer.js.html#lineNumber4">source</a></span></span>
+      <span data-ice="source"><span><a href="file/lib/serializers/createPrettySerializer.js.html#lineNumber13">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import createPrettySerializer from &apos;<span><a href="file/lib/serializers/createPrettySerializer.js.html#lineNumber4">bunyan-serializer/lib/serializers/createPrettySerializer.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import createPrettySerializer from &apos;<span><a href="file/lib/serializers/createPrettySerializer.js.html#lineNumber13">bunyan-serializer/lib/serializers/createPrettySerializer.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>createPrettySerializer is a thunk that takes configuration parameters and returns a bunyan serializer function.</p>
+</div>
 
   
 
@@ -102,12 +104,47 @@
     </thead>
     <tbody>
     
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">objectPattern</td>
-      <td data-ice="type">{&quot;showName&quot;: <span>*</span>, &quot;showHostname&quot;: <span>*</span>, &quot;showPid&quot;: <span>*</span>, &quot;showTime&quot;: <span>*</span>, &quot;showError&quot;: <span>*</span>, &quot;showSilly&quot;: <span>*</span>}</td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: {}</li></ul></td>
-      <td data-ice="description"></td>
+    <tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.showName</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Enables printing the logger name in logs. (false)</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.showHostname</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Enables printing the hostname in logs. (false)</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.showPid</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Enables printing the process id in the logs. (true)</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.showTime</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Enables printing the timestamp in the logs. (true)</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.showError</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Enables printing errors in the logs. (true)</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" data-depth="1">options.showSilly</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Prints additional debug information into the logs. (false)</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -118,8 +155,9 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span>bunyanSerializer</span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>Returns a pretty formatting bunyanSerializer function that converts bunyan write input to human readable text.</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">

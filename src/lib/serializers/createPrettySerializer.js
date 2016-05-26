@@ -1,6 +1,15 @@
 
 
-
+/**
+ * createPrettySerializer is a thunk that takes configuration parameters and returns a bunyan serializer function.
+ * @param  {boolean} options.showName     Enables printing the logger name in logs. (false)
+ * @param  {boolean} options.showHostname Enables printing the hostname in logs. (false)
+ * @param  {boolean} options.showPid      Enables printing the process id in the logs. (true)
+ * @param  {boolean} options.showTime     Enables printing the timestamp in the logs. (true)
+ * @param  {boolean} options.showError    Enables printing errors in the logs. (true)
+ * @param  {boolean} options.showSilly    Prints additional debug information into the logs. (false)
+ * @return {bunyanSerializer}             Returns a pretty formatting bunyanSerializer function that converts bunyan write input to human readable text.
+ */
 export default function createPrettySerializer( { showName = false
                                                 , showHostname = false
                                                 , showPid = true
