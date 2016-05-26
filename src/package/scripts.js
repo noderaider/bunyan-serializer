@@ -12,7 +12,7 @@ export default ({}) => ({ 'start': 'npm run build -- --watch'
                           /** CLEAN EVERYTHING PRE BUILD */
                         , 'clean': 'run-p clean-lib clean-test clean-doc'
                         , 'clean-lib': 'rimraf lib'
-                        , 'clean-test': 'rimraf spec/test'
+                        , 'clean-test': 'rimraf spec/tests'
                         , 'clean-doc': 'rimraf doc'
 
                           /** COMPILE */

@@ -49,3 +49,17 @@ const serializer = createPrettySerializer({ showName: false
 // ...
 
 ```
+
+
+## Options
+
+**createPrettySerializer takes the following options:**
+
+Name            | Type (default)    | Description
+-------------   | ----------------- | -----------
+`showName`      | `Boolean (false)` | Show the name of the logger in logs.
+`showHostname`  | `Boolean (false)` | Show the hostname in logs.
+`showPid`       | `Boolean (true)`  | Show the process id in logs.
+`showTime`      | `Boolean (true)`  | Show the time in logs.
+`showError`     | `Boolean (true)`  | Show error details in logs.
+`showSilly`     | `Boolean (false)` | Show extra debug information (for development / debugging purposes)
