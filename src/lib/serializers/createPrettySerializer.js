@@ -1,3 +1,6 @@
+
+
+
 /**
  * createPrettySerializer is a thunk that takes configuration parameters and returns a bunyan serializer function.
  * @param  {boolean} options.showName     Enables printing the logger name in logs. (false)
@@ -15,6 +18,19 @@ export default function createPrettySerializer( { showName = false
                                                 , showError = true
                                                 , showSilly = false
                                                 } = {}) {
+
+  /**
+   * Mapping of bunyan level numbers to log levels
+   * @type {Object}
+   */
+  const LEVEL_MAP = { 10: 'TRACE'
+                    , 20: 'DEBUG'
+                    , 30: 'INFO'
+                    , 40: 'WARN'
+                    , 50: 'ERROR'
+                    , 60: 'FATAL'
+                    }
+
   /**
    * prettySerializer takes arguments from a bunyan WritableStream's write method and formats output in a human readable format.
    * @param  {...Object} args - args that were passed to WritableStream.prototype.write()
@@ -26,7 +42,7 @@ export default function createPrettySerializer( { showName = false
       try {
         record = typeof record === 'string' ? JSON.parse(record) : record
       } catch(err) {
-        return `INTERNAL|UNPARSEABLE=${record}`
+        return `NOPARSE|${record}`
       }
       const { name, hostname, pid, level, msg, time, v, err } = record
       let levelName = level ? LEVEL_MAP[level] : 'UNKNOWN'
