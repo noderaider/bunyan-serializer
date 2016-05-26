@@ -39,6 +39,8 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">lib/serializers/createPrettySerializer.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">
+
+
 export default function createPrettySerializer( { showName = false
                                                 , showHostname = false
                                                 , showPid = true
@@ -46,7 +48,11 @@ export default function createPrettySerializer( { showName = false
                                                 , showError = true
                                                 , showSilly = false
                                                 } = {}) {
-
+  /**
+   * prettySerializer takes arguments from a bunyan WritableStream&apos;s write method and formats output in a human readable format.
+   * @param  {...Object} args - args that were passed to WritableStream.prototype.write()
+   * @return {string}           human readable string
+   */
   return function prettySerializer(...args) {
     try {
       let record = x

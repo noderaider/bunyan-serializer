@@ -1,4 +1,6 @@
 
+
+
 export default function createPrettySerializer( { showName = false
                                                 , showHostname = false
                                                 , showPid = true
@@ -6,7 +8,11 @@ export default function createPrettySerializer( { showName = false
                                                 , showError = true
                                                 , showSilly = false
                                                 } = {}) {
-
+  /**
+   * prettySerializer takes arguments from a bunyan WritableStream's write method and formats output in a human readable format.
+   * @param  {...Object} args - args that were passed to WritableStream.prototype.write()
+   * @return {string}           human readable string
+   */
   return function prettySerializer(...args) {
     try {
       let record = x
