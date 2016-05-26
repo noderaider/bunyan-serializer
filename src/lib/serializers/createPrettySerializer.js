@@ -22,9 +22,9 @@ export default function createPrettySerializer( { showName = false
    */
   return function prettySerializer(...args) {
     try {
-      let record = x
+      let [record, ...rest] = args
       try {
-        record = typeof x === 'string' ? JSON.parse(x) : x
+        record = typeof record === 'string' ? JSON.parse(record) : record
       } catch(err) {
         return `INTERNAL|UNPARSEABLE=${record}`
       }
