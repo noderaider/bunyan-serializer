@@ -346,5 +346,11 @@ window.esdocSearchIndex = [
     "file/lib/serializers/createPrettySerializer.js.html",
     "lib/serializers/createPrettySerializer.js",
     "file"
+  ],
+  [
+    "lib/serializers/index.js",
+    "file/lib/serializers/index.js.html",
+    "lib/serializers/index.js",
+    "file"
   ]
 ]
