@@ -10,13 +10,14 @@
 export default ({}) => ({ 'start': 'npm run build -- --watch'
 
                           /** CLEAN EVERYTHING PRE BUILD */
-                        , 'clean': 'rimraf build && rimraf .githooks && rimraf spec/tests'
+                        , 'clean': 'run-p clean-lib clean-test'
+                        , 'clean-lib': 'rimraf lib'
+                        , 'clean-test': 'rimraf spec/test'
 
                           /** COMPILE */
                         , 'prebuild': 'npm run clean'
                         , 'build': 'babel src/lib -d lib'
-                        , 'postbuild': 'run-p build-hooks build-test'
-                        , 'build-hooks': 'babel src/.githooks -d .githooks'
+                        , 'postbuild': 'npm run build-test'
                         , 'build-test': 'babel src/spec -d spec'
 
                           /** TEST */

@@ -21,11 +21,12 @@
   ],
   "scripts": {
     "start": "npm run build -- --watch",
-    "clean": "rimraf build && rimraf .githooks && rimraf spec/tests",
+    "clean": "run-p clean-lib clean-test",
+    "clean-lib": "rimraf lib",
+    "clean-test": "rimraf spec/test",
     "prebuild": "npm run clean",
     "build": "babel src/lib -d lib",
-    "postbuild": "run-p build-hooks build-test",
-    "build-hooks": "babel src/.githooks -d .githooks",
+    "postbuild": "npm run build-test",
     "build-test": "babel src/spec -d spec",
     "pretest": "npm run build",
     "test": "jasmine",
@@ -51,7 +52,6 @@
     "bunyan": "^1.8.1",
     "esdoc": "^0.4.6",
     "esdoc-es7-plugin": "0.0.3",
-    "git-hooks": "^1.0.2",
     "ncp": "^2.0.0",
     "npm-run-all": "^2.1.1",
     "rimraf": "^2.5.2"
