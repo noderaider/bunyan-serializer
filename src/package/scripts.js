@@ -10,9 +10,10 @@
 export default ({}) => ({ 'start': 'npm run build -- --watch'
 
                           /** CLEAN EVERYTHING PRE BUILD */
-                        , 'clean': 'run-p clean-lib clean-test'
+                        , 'clean': 'run-p clean-lib clean-test clean-doc'
                         , 'clean-lib': 'rimraf lib'
                         , 'clean-test': 'rimraf spec/test'
+                        , 'clean-doc': 'rimraf doc'
 
                           /** COMPILE */
                         , 'prebuild': 'npm run clean'
@@ -32,12 +33,11 @@ export default ({}) => ({ 'start': 'npm run build -- --watch'
                           /** GH-PAGES RELEASE */
                         , 'prerelease-gh-pages': 'npm run doc'
                         , 'release-gh-pages': 'run-s gh-pages-subtree gh-pages-push gh-pages-delete'
-                        , 'postrelease-gh-pages': 'rimraf public && git-save -- remove-docs && git push --follow-tags'
+                        , 'postrelease-gh-pages': 'npm run clean && npm run git-save -- clean && git push --follow-tags'
 
                           /** ESDOC */
                         , 'predoc': `rimraf ${GH_PAGES_ROOT}`
                         , 'doc': `esdoc -c ./esdoc.json && ncp CNAME ${GH_PAGES_ROOT}/CNAME`
-                        , 'postdoc': 'npm run git-save -- docs'
 
                           /** GIT COMMANDS */
                         , 'gh-pages-subtree': `git subtree split --prefix ${GH_PAGES_ROOT} -b gh-pages`
